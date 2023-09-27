@@ -16,7 +16,6 @@ export function makeQuestion(
   const question = Question.create(
     {
       title: faker.lorem.sentence(),
-      slug: Slug.create('example-question'),
       authorId: new UniqueEntityID(),
       content: faker.lorem.text(),
       ...override,
