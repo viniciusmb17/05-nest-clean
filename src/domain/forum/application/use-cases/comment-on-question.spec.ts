@@ -1,25 +1,34 @@
-import { InMemoryQuestionCommentsRepository } from 'test/repositories/in-memory-question-comments-repository'
-import { CommentOnQuestionUseCase } from './comment-on-question'
-import { InMemoryQuestionsRepository } from 'test/repositories/in-memory-questions-repository'
-import { makeQuestion } from 'test/factories/make-question'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found-error'
+import { makeQuestion } from 'test/factories/make-question'
+import { InMemoryAttachmentsRepository } from 'test/repositories/in-memory-attachments-repository'
 import { InMemoryQuestionAttachmentsRepository } from 'test/repositories/in-memory-question-attachments-repository'
+import { InMemoryQuestionCommentsRepository } from 'test/repositories/in-memory-question-comments-repository'
+import { InMemoryQuestionsRepository } from 'test/repositories/in-memory-questions-repository'
+import { InMemoryStudentsRepository } from 'test/repositories/in-memory-students-repository'
+import { CommentOnQuestionUseCase } from './comment-on-question'
 
 let inMemoryQuestionAttachmentsRepository: InMemoryQuestionAttachmentsRepository
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository
 let inMemoryQuestionCommentsRepository: InMemoryQuestionCommentsRepository
+let inMemoryAttachmentsRepository: InMemoryAttachmentsRepository
+let inMemoryStudentsRepository: InMemoryStudentsRepository
 let sut: CommentOnQuestionUseCase // System Under Test
 
 describe('Comment On Question', () => {
   beforeEach(() => {
     inMemoryQuestionAttachmentsRepository =
       new InMemoryQuestionAttachmentsRepository()
+    inMemoryAttachmentsRepository = new InMemoryAttachmentsRepository()
+    inMemoryStudentsRepository = new InMemoryStudentsRepository()
     inMemoryQuestionsRepository = new InMemoryQuestionsRepository(
       inMemoryQuestionAttachmentsRepository,
+      inMemoryAttachmentsRepository,
+      inMemoryStudentsRepository,
     )
-    inMemoryQuestionCommentsRepository =
-      new InMemoryQuestionCommentsRepository()
+    inMemoryQuestionCommentsRepository = new InMemoryQuestionCommentsRepository(
+      inMemoryStudentsRepository,
+    )
     sut = new CommentOnQuestionUseCase(
       inMemoryQuestionsRepository,
       inMemoryQuestionCommentsRepository,
