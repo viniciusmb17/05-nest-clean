@@ -8,7 +8,7 @@ function doSomething(shouldSuccess: boolean): Either<string, number> {
   }
 }
 
-it.only('success result', () => {
+it('success result', () => {
   const result = doSomething(true)
 
   if (result.isRight()) {
@@ -19,7 +19,7 @@ it.only('success result', () => {
   expect(result.isLeft()).toBe(false)
 })
 
-it.only('error result', () => {
+it('error result', () => {
   const result = doSomething(false)
 
   expect(result.isLeft()).toBe(true)
