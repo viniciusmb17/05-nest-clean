@@ -17,7 +17,7 @@ export class ReadNotificationController {
   @HttpCode(204)
   async handle(
     @CurrentUser() user: UserPayload,
-    @Param('notificationId') notificationId: string,
+    @Param('notificationId') notificationId: string
   ) {
     const result = await this.readNotification.execute({
       notificationId,

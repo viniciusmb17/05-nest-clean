@@ -31,7 +31,7 @@ export class EditQuestionController {
   async handle(
     @Body(bodyValidationPipe) body: EditQuestionBodySchema,
     @CurrentUser() user: UserPayload,
-    @Param('id') questionId: string,
+    @Param('id') questionId: string
   ) {
     const { title, content, attachments } = body
     const userId = user.sub

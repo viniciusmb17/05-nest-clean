@@ -103,7 +103,7 @@ describe('Edit question (E2E)', () => {
         expect.objectContaining({
           id: attachment3.id.toString(),
         }),
-      ]),
+      ])
     )
   })
 })

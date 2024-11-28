@@ -89,7 +89,7 @@ export class Question extends AggregateRoot<QuestionProps> {
 
   static create(
     props: Optional<QuestionProps, 'createdAt' | 'slug' | 'attachments'>,
-    id?: UniqueEntityID,
+    id?: UniqueEntityID
   ) {
     const question = new Question(
       {
@@ -98,7 +98,7 @@ export class Question extends AggregateRoot<QuestionProps> {
         attachments: props.attachments ?? new QuestionAttachmentList(),
         createdAt: props.createdAt ?? new Date(),
       },
-      id,
+      id
     )
 
     return question

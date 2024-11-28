@@ -10,7 +10,7 @@ import { PrismaAnswerCommentMapper } from '@/infra/database/prisma/mappers/prism
 
 export function makeAnswerComment(
   override: Partial<AnswerCommentProps> = {},
-  id?: UniqueEntityID,
+  id?: UniqueEntityID
 ) {
   const answerComment = AnswerComment.create(
     {
@@ -19,7 +19,7 @@ export function makeAnswerComment(
       answerId: new UniqueEntityID(),
       ...override,
     },
-    id,
+    id
   )
 
   return answerComment
@@ -30,7 +30,7 @@ export class AnswerCommentFactory {
   constructor(private prisma: PrismaService) {}
 
   async makePrismaAnswerComment(
-    data: Partial<AnswerCommentProps> = {},
+    data: Partial<AnswerCommentProps> = {}
   ): Promise<AnswerComment> {
     const answerComment = makeAnswerComment(data)
 

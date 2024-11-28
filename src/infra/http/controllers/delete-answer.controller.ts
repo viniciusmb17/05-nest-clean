@@ -17,7 +17,7 @@ export class DeleteAnswerController {
   @HttpCode(204)
   async handle(
     @CurrentUser() user: UserPayload,
-    @Param('id') answerId: string,
+    @Param('id') answerId: string
   ) {
     const userId = user.sub
 

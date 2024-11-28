@@ -27,7 +27,7 @@ type EditAnswerUseCaseResponse = Either<
 export class EditAnswerUseCase {
   constructor(
     private answersRepository: AnswersRepository,
-    private answerAttachmentsRepository: AnswerAttachmentsRepository,
+    private answerAttachmentsRepository: AnswerAttachmentsRepository
   ) {}
 
   async execute({
@@ -50,7 +50,7 @@ export class EditAnswerUseCase {
       await this.answerAttachmentsRepository.findManyByAnswerId(answerId)
 
     const answerAttachmentList = new AnswerAttachmentList(
-      currentAnswerAttachments,
+      currentAnswerAttachments
     )
 
     const answerAttachments = attachmentsIds.map((attachmentId) => {

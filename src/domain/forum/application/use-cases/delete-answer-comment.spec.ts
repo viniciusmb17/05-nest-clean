@@ -13,7 +13,7 @@ describe('Delete Answer Comment', () => {
   beforeEach(() => {
     inMemoryStudentsRepository = new InMemoryStudentsRepository()
     inMemoryAnswerCommentsRepository = new InMemoryAnswerCommentsRepository(
-      inMemoryStudentsRepository,
+      inMemoryStudentsRepository
     )
     sut = new DeleteAnswerCommentUseCase(inMemoryAnswerCommentsRepository)
   })

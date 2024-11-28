@@ -28,7 +28,7 @@ export class AnswerQuestionController {
   async handle(
     @Body(bodyValidationPipe) body: AnswerQuestionBodySchema,
     @CurrentUser() user: UserPayload,
-    @Param('questionId') questionId: string,
+    @Param('questionId') questionId: string
   ) {
     const { content, attachments } = body
     const userId = user.sub

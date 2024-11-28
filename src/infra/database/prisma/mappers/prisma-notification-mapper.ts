@@ -12,12 +12,12 @@ export class PrismaNotificationMapper {
         readAt: raw.readAt,
         createdAt: raw.createdAt,
       },
-      new UniqueEntityID(raw.id),
+      new UniqueEntityID(raw.id)
     )
   }
 
   static toPrisma(
-    notification: Notification,
+    notification: Notification
   ): Prisma.NotificationUncheckedCreateInput {
     return {
       id: notification.id.toString(),

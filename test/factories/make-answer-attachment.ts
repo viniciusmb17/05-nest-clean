@@ -8,7 +8,7 @@ import { Injectable } from '@nestjs/common'
 
 export function makeAnswerAttachment(
   override: Partial<AnswerAttachmentProps> = {},
-  id?: UniqueEntityID,
+  id?: UniqueEntityID
 ) {
   const answerAttachment = AnswerAttachment.create(
     {
@@ -16,7 +16,7 @@ export function makeAnswerAttachment(
       attachmentId: new UniqueEntityID(),
       ...override,
     },
-    id,
+    id
   )
 
   return answerAttachment
@@ -27,7 +27,7 @@ export class AnswerAttachmentFactory {
   constructor(private prisma: PrismaService) {}
 
   async makePrismaAnswerAttachment(
-    data: Partial<AnswerAttachmentProps> = {},
+    data: Partial<AnswerAttachmentProps> = {}
   ): Promise<AnswerAttachment> {
     const answerAttachment = makeAnswerAttachment(data)
 

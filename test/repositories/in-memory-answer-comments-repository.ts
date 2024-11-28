@@ -31,7 +31,7 @@ export class InMemoryAnswerCommentsRepository
 
   async findManyByAnswerIdWithAuthor(
     answerId: string,
-    { page }: PaginationParams,
+    { page }: PaginationParams
   ) {
     const answerComments = this.items
       .filter((item) => item.answerId.toString() === answerId)
@@ -43,7 +43,7 @@ export class InMemoryAnswerCommentsRepository
 
         if (!author) {
           throw new Error(
-            `Author with ID "${comment.authorId.toString()} does not exist.`,
+            `Author with ID "${comment.authorId.toString()} does not exist.`
           )
         }
 
@@ -66,7 +66,7 @@ export class InMemoryAnswerCommentsRepository
 
   async delete(answerComment: AnswerComment) {
     const itemIndex = this.items.findIndex(
-      (item) => item.id === answerComment.id,
+      (item) => item.id === answerComment.id
     )
 
     this.items.splice(itemIndex, 1)

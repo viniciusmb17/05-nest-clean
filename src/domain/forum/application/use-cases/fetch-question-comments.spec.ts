@@ -13,7 +13,7 @@ describe('Fetch Question Comments', () => {
   beforeEach(() => {
     inMemoryStudentsRepository = new InMemoryStudentsRepository()
     inMemoryQuestionCommentsRepository = new InMemoryQuestionCommentsRepository(
-      inMemoryStudentsRepository,
+      inMemoryStudentsRepository
     )
     sut = new FetchQuestionCommentsUseCase(inMemoryQuestionCommentsRepository)
   })
@@ -60,7 +60,7 @@ describe('Fetch Question Comments', () => {
           author: 'John Doe',
           commentId: comment3.id,
         }),
-      ]),
+      ])
     )
   })
 
@@ -74,7 +74,7 @@ describe('Fetch Question Comments', () => {
         makeQuestionComment({
           questionId: new UniqueEntityID('question-1'),
           authorId: student.id,
-        }),
+        })
       )
     }
 

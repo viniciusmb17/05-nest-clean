@@ -5,7 +5,7 @@ export abstract class AnswersRepository {
   abstract findById(answerId: string): Promise<Answer | null>
   abstract findManyByQuestionId(
     questionId: string,
-    params: PaginationParams,
+    params: PaginationParams
   ): Promise<Answer[]>
 
   abstract save(answer: Answer): Promise<void>

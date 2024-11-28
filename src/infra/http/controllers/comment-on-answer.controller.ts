@@ -27,7 +27,7 @@ export class CommentOnAnswerController {
   async handle(
     @Body(bodyValidationPipe) body: CommentOnAnswerBodySchema,
     @CurrentUser() user: UserPayload,
-    @Param('answerId') answerId: string,
+    @Param('answerId') answerId: string
   ) {
     const { content } = body
     const userId = user.sub

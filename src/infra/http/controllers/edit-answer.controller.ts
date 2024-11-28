@@ -30,7 +30,7 @@ export class EditAnswerController {
   async handle(
     @Body(bodyValidationPipe) body: EditAnswerBodySchema,
     @CurrentUser() user: UserPayload,
-    @Param('id') answerId: string,
+    @Param('id') answerId: string
   ) {
     const { content, attachments } = body
     const userId = user.sub

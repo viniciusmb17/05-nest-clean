@@ -24,14 +24,14 @@ describe('Comment On Question', () => {
     inMemoryQuestionsRepository = new InMemoryQuestionsRepository(
       inMemoryQuestionAttachmentsRepository,
       inMemoryAttachmentsRepository,
-      inMemoryStudentsRepository,
+      inMemoryStudentsRepository
     )
     inMemoryQuestionCommentsRepository = new InMemoryQuestionCommentsRepository(
-      inMemoryStudentsRepository,
+      inMemoryStudentsRepository
     )
     sut = new CommentOnQuestionUseCase(
       inMemoryQuestionsRepository,
-      inMemoryQuestionCommentsRepository,
+      inMemoryQuestionCommentsRepository
     )
   })
 
@@ -49,7 +49,7 @@ describe('Comment On Question', () => {
     expect(result.isRight()).toBe(true)
     if (result.isRight()) {
       expect(inMemoryQuestionCommentsRepository.items[0]).toEqual(
-        result.value.questionComment,
+        result.value.questionComment
       )
       expect(result.value.questionComment.content).toEqual('Test comment')
     }
@@ -57,7 +57,7 @@ describe('Comment On Question', () => {
 
   it('should not be able to create a question comment from an incorrect question id', async () => {
     await inMemoryQuestionsRepository.create(
-      makeQuestion({}, new UniqueEntityID('question-1')),
+      makeQuestion({}, new UniqueEntityID('question-1'))
     )
 
     const result = await sut.execute({

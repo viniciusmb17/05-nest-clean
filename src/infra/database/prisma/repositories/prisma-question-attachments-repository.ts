@@ -11,7 +11,7 @@ export class PrismaQuestionAttachmentsRepository
   constructor(private prisma: PrismaService) {}
 
   async findManyByQuestionId(
-    questionId: string,
+    questionId: string
   ): Promise<QuestionAttachment[]> {
     const questionAttachments = await this.prisma.attachment.findMany({
       where: {

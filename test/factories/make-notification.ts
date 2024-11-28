@@ -11,7 +11,7 @@ import { Injectable } from '@nestjs/common'
 
 export function makeNotification(
   override: Partial<NotificationProps> = {},
-  id?: UniqueEntityID,
+  id?: UniqueEntityID
 ) {
   const notification = Notification.create(
     {
@@ -20,7 +20,7 @@ export function makeNotification(
       content: faker.lorem.sentence(10),
       ...override,
     },
-    id,
+    id
   )
 
   return notification
@@ -31,7 +31,7 @@ export class NotificationFactory {
   constructor(private prisma: PrismaService) {}
 
   async makePrismaNotification(
-    data: Partial<NotificationProps> = {},
+    data: Partial<NotificationProps> = {}
   ): Promise<Notification> {
     const notification = makeNotification(data)
 

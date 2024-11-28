@@ -11,7 +11,7 @@ import { PrismaService } from '../prisma.service'
 export class PrismaAnswersRepository implements AnswersRepository {
   constructor(
     private prisma: PrismaService,
-    private answerAttachmentsRepository: AnswerAttachmentsRepository,
+    private answerAttachmentsRepository: AnswerAttachmentsRepository
   ) {}
 
   async findById(id: string): Promise<Answer | null> {
@@ -30,7 +30,7 @@ export class PrismaAnswersRepository implements AnswersRepository {
 
   async findManyByQuestionId(
     questionId: string,
-    { page }: PaginationParams,
+    { page }: PaginationParams
   ): Promise<Answer[]> {
     const answers = await this.prisma.answer.findMany({
       where: {
@@ -54,7 +54,7 @@ export class PrismaAnswersRepository implements AnswersRepository {
     })
 
     await this.answerAttachmentsRepository.createMany(
-      answer.attachments.getItems(),
+      answer.attachments.getItems()
     )
 
     DomainEvents.dispatchEventsForAggregate(answer.id)
@@ -71,10 +71,10 @@ export class PrismaAnswersRepository implements AnswersRepository {
         data,
       }),
       this.answerAttachmentsRepository.createMany(
-        answer.attachments.getNewItems(),
+        answer.attachments.getNewItems()
       ),
       this.answerAttachmentsRepository.deleteMany(
-        answer.attachments.getRemovedItems(),
+        answer.attachments.getRemovedItems()
       ),
     ])
 

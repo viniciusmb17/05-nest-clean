@@ -9,7 +9,7 @@ import { SendNotificationUseCase } from '../use-cases/send-notification'
 export class OnAnswerCreated implements EventHandler {
   constructor(
     private questionsRespository: QuestionsRepository,
-    private sendNotification: SendNotificationUseCase,
+    private sendNotification: SendNotificationUseCase
   ) {
     this.setupSubscriptions()
   }
@@ -17,13 +17,13 @@ export class OnAnswerCreated implements EventHandler {
   setupSubscriptions() {
     DomainEvents.register(
       this.sendNewAnswerNotification.bind(this),
-      AnswerCreatedEvent.name,
+      AnswerCreatedEvent.name
     )
   }
 
   private async sendNewAnswerNotification({ answer }: AnswerCreatedEvent) {
     const question = await this.questionsRespository.findById(
-      answer.questionId.toString(),
+      answer.questionId.toString()
     )
 
     if (question) {

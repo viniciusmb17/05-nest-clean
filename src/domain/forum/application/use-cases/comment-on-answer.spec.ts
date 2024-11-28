@@ -18,15 +18,15 @@ describe('Comment On Answer', () => {
     inMemoryAnswerAttachmentsRepository =
       new InMemoryAnswerAttachmentsRepository()
     inMemoryAnswersRepository = new InMemoryAnswersRepository(
-      inMemoryAnswerAttachmentsRepository,
+      inMemoryAnswerAttachmentsRepository
     )
     inMemoryStudentsRepository = new InMemoryStudentsRepository()
     inMemoryAnswerCommentsRepository = new InMemoryAnswerCommentsRepository(
-      inMemoryStudentsRepository,
+      inMemoryStudentsRepository
     )
     sut = new CommentOnAnswerUseCase(
       inMemoryAnswersRepository,
-      inMemoryAnswerCommentsRepository,
+      inMemoryAnswerCommentsRepository
     )
   })
 
@@ -44,14 +44,14 @@ describe('Comment On Answer', () => {
     expect(result.isRight()).toBe(true)
     if (result.isRight()) {
       expect(inMemoryAnswerCommentsRepository.items[0]).toEqual(
-        result.value.answerComment,
+        result.value.answerComment
       )
     }
   })
 
   it('should not be able to create a answer comment from an incorrect answer id', async () => {
     await inMemoryAnswersRepository.create(
-      makeAnswer({}, new UniqueEntityID('answer-1')),
+      makeAnswer({}, new UniqueEntityID('answer-1'))
     )
 
     const result = await sut.execute({

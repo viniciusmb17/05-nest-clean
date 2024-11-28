@@ -28,7 +28,7 @@ export class FetchAnswerCommentsController {
   @Get()
   async handle(
     @Query('page', queryValidationPipe) page: PageQueryParamSchema,
-    @Param('answerId') answerId: string,
+    @Param('answerId') answerId: string
   ) {
     const result = await this.fetchAnswerComments.execute({
       page,

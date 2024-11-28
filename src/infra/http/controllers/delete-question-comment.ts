@@ -17,7 +17,7 @@ export class DeleteQuestionCommentController {
   @HttpCode(204)
   async handle(
     @CurrentUser() user: UserPayload,
-    @Param('id') questionCommentId: string,
+    @Param('id') questionCommentId: string
   ) {
     const userId = user.sub
 

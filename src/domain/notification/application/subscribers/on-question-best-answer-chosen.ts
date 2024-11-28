@@ -9,7 +9,7 @@ import { SendNotificationUseCase } from '../use-cases/send-notification'
 export class OnQuestionBestAnswerChosen implements EventHandler {
   constructor(
     private answersRespository: AnswersRepository,
-    private sendNotification: SendNotificationUseCase,
+    private sendNotification: SendNotificationUseCase
   ) {
     this.setupSubscriptions()
   }
@@ -17,7 +17,7 @@ export class OnQuestionBestAnswerChosen implements EventHandler {
   setupSubscriptions() {
     DomainEvents.register(
       this.sendQuestionBestAnswerNotification.bind(this),
-      QuestionBestAnswerChosenEvent.name,
+      QuestionBestAnswerChosenEvent.name
     )
   }
 
@@ -26,7 +26,7 @@ export class OnQuestionBestAnswerChosen implements EventHandler {
     bestAnswerId,
   }: QuestionBestAnswerChosenEvent) {
     const answer = await this.answersRespository.findById(
-      bestAnswerId.toString(),
+      bestAnswerId.toString()
     )
     if (answer) {
       await this.sendNotification.execute({

@@ -24,7 +24,7 @@ describe('Get Question By Slug', () => {
     inMemoryQuestionsRepository = new InMemoryQuestionsRepository(
       inMemoryQuestionAttachmentsRepository,
       inMemoryAttachmentsRepository,
-      inMemoryStudentsRepository,
+      inMemoryStudentsRepository
     )
     sut = new GetQuestionBySlugUseCase(inMemoryQuestionsRepository)
   })
@@ -51,7 +51,7 @@ describe('Get Question By Slug', () => {
       makeQuestionAttachment({
         attachmentId: attachment.id,
         questionId: newQuestion.id,
-      }),
+      })
     )
 
     const result = await sut.execute({

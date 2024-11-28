@@ -9,12 +9,12 @@ export class PrismaAttachmentMapper {
         title: raw.title,
         url: raw.url,
       },
-      new UniqueEntityID(raw.id),
+      new UniqueEntityID(raw.id)
     )
   }
 
   static toPrisma(
-    attachment: Attachment,
+    attachment: Attachment
   ): Prisma.AttachmentUncheckedCreateInput {
     return {
       id: attachment.id.toString(),

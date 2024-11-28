@@ -23,7 +23,7 @@ type UploadAndCreateAttachmentUseCaseResponse = Either<
 export class UploadAndCreateAttachmentUseCase {
   constructor(
     private attachmentsRepository: AttachmentsRepository,
-    private uploader: Uploader,
+    private uploader: Uploader
   ) {}
 
   async execute({

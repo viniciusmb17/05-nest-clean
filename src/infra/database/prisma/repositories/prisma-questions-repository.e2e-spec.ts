@@ -83,7 +83,7 @@ describe('Prisma Questions Repository (E2E)', () => {
 
     await cacheRepository.set(
       `question:${slug}:details`,
-      JSON.stringify({ empty: true }),
+      JSON.stringify({ empty: true })
     )
 
     const questionDetails = await questionsRepository.findDetailsBySlug(slug)
@@ -109,7 +109,7 @@ describe('Prisma Questions Repository (E2E)', () => {
 
     await cacheRepository.set(
       `question:${slug}:details`,
-      JSON.stringify({ empty: true }),
+      JSON.stringify({ empty: true })
     )
 
     await questionsRepository.save(question)

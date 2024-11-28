@@ -15,7 +15,7 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
   constructor(
     private prisma: PrismaService,
     private cache: CacheRepository,
-    private questionAttachmentsRepository: QuestionAttachmentsRepository,
+    private questionAttachmentsRepository: QuestionAttachmentsRepository
   ) {}
 
   async findById(id: string): Promise<Question | null> {
@@ -73,7 +73,7 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
 
     await this.cache.set(
       `question:${slug}:details`,
-      JSON.stringify(questionDetails),
+      JSON.stringify(questionDetails)
     )
 
     return questionDetails
@@ -97,7 +97,7 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
     await this.prisma.question.create({ data })
 
     await this.questionAttachmentsRepository.createMany(
-      question.attachments.getItems(),
+      question.attachments.getItems()
     )
 
     DomainEvents.dispatchEventsForAggregate(question.id)
@@ -114,10 +114,10 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
         data,
       }),
       this.questionAttachmentsRepository.createMany(
-        question.attachments.getNewItems(),
+        question.attachments.getNewItems()
       ),
       this.questionAttachmentsRepository.deleteMany(
-        question.attachments.getRemovedItems(),
+        question.attachments.getRemovedItems()
       ),
       this.cache.delete(`question:${data.slug}:details`),
     ])

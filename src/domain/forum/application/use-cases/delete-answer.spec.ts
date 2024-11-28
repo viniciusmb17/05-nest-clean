@@ -15,7 +15,7 @@ describe('Delete Answer', () => {
     inMemoryAnswerAttachmentsRepository =
       new InMemoryAnswerAttachmentsRepository()
     inMemoryAnswersRepository = new InMemoryAnswersRepository(
-      inMemoryAnswerAttachmentsRepository,
+      inMemoryAnswerAttachmentsRepository
     )
     sut = new DeleteAnswerUseCase(inMemoryAnswersRepository)
   })
@@ -25,7 +25,7 @@ describe('Delete Answer', () => {
       {
         authorId: new UniqueEntityID('author-1'),
       },
-      new UniqueEntityID('answer-1'),
+      new UniqueEntityID('answer-1')
     )
 
     await inMemoryAnswersRepository.create(newAnswer)
@@ -38,7 +38,7 @@ describe('Delete Answer', () => {
       makeAnswerAttachment({
         answerId: newAnswer.id,
         attachmentId: new UniqueEntityID('2'),
-      }),
+      })
     )
 
     await sut.execute({
@@ -55,7 +55,7 @@ describe('Delete Answer', () => {
       {
         authorId: new UniqueEntityID('author-1'),
       },
-      new UniqueEntityID('answer-1'),
+      new UniqueEntityID('answer-1')
     )
 
     await inMemoryAnswersRepository.create(newAnswer)
